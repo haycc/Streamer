@@ -1,0 +1,243 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+    Use npm update from root dir to re install libraries below
+    -->
+
+    <script type="text/javascript" src="node_modules\jquery\dist\jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules\radio\radio.min.js"></script>
+    <script type="text/javascript" src="node_modules\handlebars\dist\handlebars.min.js"></script>
+    <script type="text/javascript" src="node_modules\underscore\underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules\underscore\underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+
+    <link href="node_modules\bootstrap\dist\css\bootstrap.css" rel="stylesheet">
+
+    <!--
+    Can use CDN's instead of npm
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/radio/0.2.0/radio.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    -->
+
+    <title>Streamer Example</title>
+
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+    <!-- source files -->
+    <script type="text/javascript" src="src/streamer.components.js"></script>
+    <script type="text/javascript" src="src/streamer.templates.js"></script>
+    <script type="text/javascript" src="src/streamer.src.js"></script>
+
+</head>
+
+<body>
+
+    <div class="row">
+
+        <div class="col-sm-7">
+
+            <h1>Streamer panel examples</h1>
+
+            <p>Simple example</p>
+            <div id="page-simple"></div>
+            <hr />
+            <script>
+                /*
+                Simple example
+                */
+                var s = window.str.streamer();
+                $("#page-simple").html(s.addPanel('page-top-panel', // make a panel ..
+                    [ // add an array of buttons ....
+                        s.addButton(   // simple button
+                            "page-top-panel-save", // unique name for this button
+                            "Save", // text to show
+                            "This is a save button"), // tooltip
+                    ]
+                    ).html);
+            </script>
+
+            <p>Icon example</p>
+            <div id="page-icons"></div>
+            <hr />
+            <script>
+                /*
+                Icon example
+                */
+                var s = window.str.streamer();
+                $("#page-icons").html(s.addPanel('page-icon-panel', // make a panel ..
+                    [ // add an array of buttons ....
+                        s.addButton(
+                            'page-icon-panel-save',
+                            '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a home button'),
+                        s.addButton(
+                            'page-icon-panel-trash',
+                            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a trash button'),
+                        s.addButton(
+                            'page-icon-panel-star',
+                            '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a star button'),
+                       s.addButton(
+                            'page-icon-panel-off',
+                            '<span class="glyphicon glyphicon-off" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a star button'),
+                    ]
+                    ).html);
+            </script>
+
+            <p>Toggle button example</p>
+            <div id="page-toggle"></div>
+            <hr />
+            <script>
+                var s = window.str.streamer();
+                /*
+                Toggle buttons example
+                */
+                $("#page-toggle").html(s.addPanel('page-toggle-panel', // make a panel ..
+                    [ // add an array of TOGGLE buttons ....
+                         s.addToggleButton(
+                            'page-toggle-panel-save',
+                            '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a home button'),
+                        s.addToggleButton(
+                            'page-toggle-panel-trash',
+                            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a trash button'),
+                        s.addToggleButton(
+                            'page-toggle-panel-star',
+                            '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a star button'),
+                       s.addToggleButton(
+                            'page-toggle-panel-off',
+                            '<span class="glyphicon glyphicon-off" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is an off button'),
+                    ]
+                    ).html);
+            </script>
+
+            <p>Search bar example</p>
+            <div id="page-search"></div>
+            <hr />
+            <script>
+                /*
+                search bar example
+                */
+                var s = window.str.streamer();
+                $("#page-search").html(s.addPanel('page-search-panel', // make a panel ..
+                    [ // add an array of buttons ....
+                        s.addButton(
+                            'page-search-panel-save',
+                            '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a home button'),
+
+                        s.addSearch("page-search-panel-search"),
+
+                       s.addButton(
+                            'page-search-panel-off',
+                            '<span class="glyphicon glyphicon-off" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is an off button'),
+                    ]
+                    ).html);
+            </script>
+
+
+
+            <p>Slide panel example</p>
+            <div id="page-slide"></div>
+            <hr />
+            <script>
+                /*
+                slide panel example
+                */
+                var s = window.str.streamer();
+                $("#page-slide").html(s.addSlidePanel('page-slide-panel', // make a panel ..
+                    [ // add an array of buttons ....
+                        s.addToggleButton(
+                            'page-slide-panel-save',
+                            '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a home button'),
+
+                        s.addToggleButton(
+                            'page-slide-panel-off',
+                            '<span class="glyphicon glyphicon-off" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is an off button'),
+                    ]
+                    ).html);
+            </script>
+
+
+            <p>Drop down example</p>
+            <div id="page-dropdown"></div>
+            <hr />
+            <script>
+                /*
+                drop down example
+                */
+                var s = window.str.streamer();
+                $("#page-dropdown").html(s.addPanel('page-dropdown-panel', // make a panel ..
+                    [ // add an array of buttons ....
+                        s.addButton(
+                            'page-dropdown-panel-save',
+                            '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is a home button'),
+
+                        s.addDropdown("page-dropdown-panel-dropdown",
+                            [
+                                s.addButton("panel-dropdown-left", "<span class='glyphicon glyphicon-align-left' aria-hidden='true'></span>", "Left align"),
+                                s.addButton("panel-dropdown-center", "<span class='glyphicon glyphicon-align-center' aria-hidden='true'></span>", "Center align"),
+                                s.addButton("panel-dropdown-right", "<span class='glyphicon glyphicon-align-right' aria-hidden='true'></span>", "Right align")
+                            ]),
+
+                        s.addButton(
+                            'page-dropdown-panel-off',
+                            '<span class="glyphicon glyphicon-off" aria-hidden="true"></span>', // glyphicon  icon, can use FA or any other !!
+                            'This is an off button'),
+                    ]
+                    ).html);
+            </script>
+
+            <script>
+                /*
+                Consuming the events that are produced by the framework
+                */
+                // all events are broadcast via radio (radio.js)
+                var write = function (x) { $("#debug-output").prepend("<small>" + x + '</small><br/>') };
+
+                $(function () { write("started ") });
+
+                // all event appear on "streamer" , bit can be configured
+                radio("streamer").subscribe(function (x) {
+                    if (x.value) { write(" - value " + x.value); }
+                    if (x.state) { write(" - state " + x.state); }
+                    write("<b>button clicked</b> " + x.event)
+                })
+            </script>
+
+        </div>
+        <div class="col-sm-4" id="debug-output" style="max-height:400px; overflow-y:auto;">
+
+
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+</html>
